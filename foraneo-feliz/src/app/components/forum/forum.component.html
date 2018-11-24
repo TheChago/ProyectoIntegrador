@@ -1,0 +1,72 @@
+<div class="container" *ngIf="departament">
+	<h2>{{title}}</h2>
+
+	<div class ="message success" *ngIf="status == 'success'">
+		El departamento se ha creado correctamente, puedes <a [routerLink]="['/departament', save_departament._id]">verlo aquí</a>
+	</div>
+
+	<div class ="message failed" *ngIf="!status == 'failed'">
+		El departamento no se ha podido crear
+	</div>
+
+	<form #departamentForm="ngForm" (ngSubmit)="onSubmit(departamentForm)">
+		<p>
+			<label for="name">Nombre</label>
+			<input type="text" name="name" #name="ngModel" [(ngModel)]="departament.name" required />
+			<span class="form_error" *ngIf="name.touched && !name.valid">
+				El nombre es obligatorio.			
+			</span>
+		</p>
+
+		<p>
+			<label for="description">Descripción</label>
+			<textarea name="description" #description="ngModel" [(ngModel)]="departament.description" required ></textarea>
+			<span class="form_error" *ngIf="description.touched && !description.valid">
+				El Descripción es obligatoria.			
+			</span>
+		</p>
+
+		<p>
+			<label for="bedrooms">Habitaciones</label>
+			<input type="text" name="bedrooms" #bedrooms="ngModel" [(ngModel)]="departament.bedrooms" required />
+			<span class="form_error" *ngIf="bedrooms.touched && !bedrooms.valid">
+				El numero de habitaciones es obligatorio.				
+			</span>
+		</p>
+
+		<p>
+			<label for="garage">Cochera</label>
+			<input type="text" name="garage" #garage="ngModel" [(ngModel)]="departament.garage" required />
+			<span class="form_error" *ngIf="garage.touched && !garage.valid">
+				Información sobre cochera es obligatorio.				
+			</span>
+		</p>
+
+		<p>
+			<label for="location">Ubicación</label>
+			<textarea name="location" #location="ngModel" [(ngModel)]="departament.location" required ></textarea>
+			<span class="form_error" *ngIf="location.touched && !location.valid">
+				La ubicación es obligatoria.				
+			</span>
+		</p>
+
+		<p>
+			<label for="rent">Renta</label>
+			<input type="text" name="rent" #rent="ngModel" [(ngModel)]="departament.rent" required />
+			<span class="form_error" *ngIf="rent.touched && !rent.valid">
+				El precio de renta es obligatorio.			
+			</span>
+		</p>
+
+		<p>
+			<label for="image">Imagen del Departamento</label>
+				<span class="image" *ngIf="departament.image" style="float:none">
+						<img src="{{url+'get-image/'+departament.image}}" style="width:100px;"/>
+				</span><br/>
+			<input type="file" name="image" placeholder="Subir imagen" (change)="fileChangeEvent($event)"/>
+		</p>
+
+		<input type="submit" value="Enviar" [disabled]="!departamentForm.form.valid"/>
+
+	</form>
+</div>

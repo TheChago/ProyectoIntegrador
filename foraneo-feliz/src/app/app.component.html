@@ -1,0 +1,17 @@
+<header>
+<ul>
+  <li><a [routerLink]="['/informacion']" [routerLinkActive]="['actived']">Informacion</a></li>
+  <li><a [routerLink]="['/para-comer']" [routerLinkActive]="['actived']">Para Comer</a></li>
+  <li id="logo"><a href="#">FF</a></li>
+  <li><a [routerLink]="['/departamentos']" [routerLinkActive]="['actived']">Departamentos</a></li>
+  <li><a [routerLink]="['/agregar-dep']" [routerLinkActive]="['actived']">Agregar Dep</a></li>
+</ul> 
+</header>
+
+<section id="content">
+  <router-outlet></router-outlet>
+</section>
+
+<footer>
+  Proyecto Integrador II - Marco De Santiago &copy;
+</footer>

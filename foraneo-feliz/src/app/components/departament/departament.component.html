@@ -1,0 +1,16 @@
+<div class="container">
+  <h2>Departamentos</h2>
+
+  <ul>
+    <li *ngFor="let departament of departaments" class="departament">
+      <a [routerLink]="['/departament', departament._id]">
+        <div class="image">
+         <img src="{{url+'get-image/'+departament.image}}" *ngIf="departament.image"/>
+        </div>      
+        <h3>{{departament.name}}</h3>
+        <p>{{departament.description}}</p>
+      </a>
+    </li>
+  </ul>
+
+</div>
